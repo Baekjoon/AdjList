@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "AdjList.h"
-#import "NSNumber+Square.h"
+#import "NSMutableArray+Queue.h"
+
 void dfs(AdjList *adj, NSMutableArray *check, NSInteger node) {
     if ([check[node] boolValue] == YES) {
         // node는 이미 방문을 했다.
@@ -24,6 +25,33 @@ void dfs(AdjList *adj, NSMutableArray *check, NSInteger node) {
     // [adj objectAtIndexedSubscript:node];
     for (id next in adj[node]) {
         dfs(adj, check, [next integerValue]);
+    }
+}
+
+void bfs(AdjList *adj, NSInteger vertex, NSInteger start) {
+    NSMutableArray *check = [NSMutableArray array];
+    for (NSInteger i=0; i<=vertex; i++) {
+        [check addObject:@(NO)];
+    }
+    
+    NSMutableArray *queue = [NSMutableArray array];
+    [queue push:@(start)];
+    check[start] = @(YES);
+    
+    while (![queue empty]) {
+        NSInteger now = [[queue pop] integerValue];
+        NSLog(@"%zd 방문", now);
+        
+        // 다음에 방문할 정점을 찾는다
+        for (id nextObj in adj[now]) {
+            NSInteger next = [nextObj integerValue];
+            // 여기서 검사해야할 것은 무엇인가!
+            if ([check[next] boolValue] == NO) {
+                // next를 방문한다 -> next를 큐에 넣는다
+                [queue push:@(next)];
+                check[next] = @(YES);
+            }
+        }
     }
 }
 
@@ -47,7 +75,11 @@ int main(int argc, const char * argv[]) {
             [check addObject:@(NO)];
         }
         
+        NSLog(@"DFS 시작");
         dfs(adj, check, 1);
+        
+        NSLog(@"BFS 시작");
+        bfs(adj, vertex, 1);
         
         // NSNumber *num = @(2);
         // NSLog(@"%@",num[20]);
