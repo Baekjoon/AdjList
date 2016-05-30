@@ -11,11 +11,16 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        NSInteger vertex = 6;
-        Graph *graph = [[Graph alloc] initWithVertex:vertex];
-        [graph loadDemoData];
+        Graph *graph = [[Graph alloc] init];
+        [graph loadDemoData1];
         [graph dfsWithStart:1];
         [graph bfsWithStart:1];
+        NSLog(@"이분 그래프인가요? %d", [graph checkBipartiteGraph]);
+        
+        [graph loadDemoData2];
+        [graph dfsWithStart:1];
+        [graph bfsWithStart:1];
+        NSLog(@"이분 그래프인가요? %d", [graph checkBipartiteGraph]);
     }
     return 0;
 }

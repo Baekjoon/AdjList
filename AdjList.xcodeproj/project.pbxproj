@@ -67,14 +67,30 @@
 			isa = PBXGroup;
 			children = (
 				734786FE1CFC061800C32FF9 /* main.m */,
+				734787121CFC2D6F00C32FF9 /* Graph */,
+				734787131CFC2D7400C32FF9 /* Category */,
+			);
+			path = AdjList;
+			sourceTree = "<group>";
+		};
+		734787121CFC2D6F00C32FF9 /* Graph */ = {
+			isa = PBXGroup;
+			children = (
 				734787051CFC063E00C32FF9 /* AdjList.h */,
 				734787061CFC063E00C32FF9 /* AdjList.m */,
 				7347870F1CFC26CA00C32FF9 /* Graph.h */,
 				734787101CFC26CA00C32FF9 /* Graph.m */,
+			);
+			name = Graph;
+			sourceTree = "<group>";
+		};
+		734787131CFC2D7400C32FF9 /* Category */ = {
+			isa = PBXGroup;
+			children = (
 				7347870B1CFC230600C32FF9 /* NSMutableArray+Queue.h */,
 				7347870C1CFC230600C32FF9 /* NSMutableArray+Queue.m */,
 			);
-			path = AdjList;
+			name = Category;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

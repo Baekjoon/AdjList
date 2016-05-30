@@ -11,7 +11,9 @@
 @interface Graph : NSObject
 
 -(instancetype)initWithVertex:(NSInteger)vertex;
--(void)loadDemoData;
+-(void)loadDemoData1;
+-(void)loadDemoData2;
 -(void)dfsWithStart:(NSInteger)start;
 -(void)bfsWithStart:(NSInteger)start;
+-(BOOL)checkBipartiteGraph;
 @end

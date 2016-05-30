@@ -16,10 +16,20 @@
 @property (readwrite) NSInteger vertex;
 
 -(void)dfsAndCurrentVertex:(NSInteger)now andVisited:(NSMutableArray *)check;
+-(BOOL)checkBipartiteGraphAndCurrentVertex:(NSInteger)now andColor:(NSInteger)color andColorArray:(NSMutableArray *)colorArray;
 
 @end
 
 @implementation Graph
+
+-(instancetype)init {
+    self = [super init];
+    if (self) {
+        self.vertex = 0;
+        self.adj = nil;
+    }
+    return self;
+}
 
 -(instancetype)initWithVertex:(NSInteger)vertex {
     self = [super init];
@@ -30,7 +40,9 @@
     return self;
 }
 
--(void)loadDemoData {
+-(void)loadDemoData1 {
+    self.vertex = 6;
+    self.adj = [[AdjList alloc] initWithVertex:self.vertex];
     [self.adj addEdgeWithFrom:1 andTo:2 andBidirection:YES];
     [self.adj addEdgeWithFrom:1 andTo:5 andBidirection:YES];
     [self.adj addEdgeWithFrom:2 andTo:3 andBidirection:YES];
@@ -39,6 +51,18 @@
     [self.adj addEdgeWithFrom:5 andTo:4 andBidirection:YES];
     [self.adj addEdgeWithFrom:4 andTo:3 andBidirection:YES];
     [self.adj addEdgeWithFrom:4 andTo:6 andBidirection:YES];
+    [self.adj sortList];
+    [self.adj printList];
+}
+
+-(void)loadDemoData2 {
+    self.vertex = 6;
+    self.adj = [[AdjList alloc] initWithVertex:self.vertex];
+    [self.adj addEdgeWithFrom:1 andTo:4 andBidirection:YES];
+    [self.adj addEdgeWithFrom:1 andTo:6 andBidirection:YES];
+    [self.adj addEdgeWithFrom:2 andTo:4 andBidirection:YES];
+    [self.adj addEdgeWithFrom:2 andTo:3 andBidirection:YES];
+    [self.adj addEdgeWithFrom:5 andTo:6 andBidirection:YES];
     [self.adj sortList];
     [self.adj printList];
 }
@@ -65,8 +89,9 @@
     // 알아서 변환
     //    ↓
     // [adj objectAtIndexedSubscript:now];
-    for (id next in self.adj[now]) {
-        [self dfsAndCurrentVertex:[next integerValue] andVisited:check];
+    for (id nextObj in self.adj[now]) {
+        NSInteger next = [nextObj integerValue];
+        [self dfsAndCurrentVertex:next andVisited:check];
     }
 }
 
@@ -96,6 +121,47 @@
             }
         }
     }
+}
+
+
+-(BOOL)checkBipartiteGraph {
+    NSMutableArray *colorArray = [NSMutableArray array];
+    for (NSInteger i=0; i<=self.vertex; i++) {
+        [colorArray addObject:@(0)];
+    }
+    
+    for (NSInteger i = 1; i <= self.vertex; i++) {
+        if ([colorArray[i] integerValue] == 0) {
+            if (![self checkBipartiteGraphAndCurrentVertex:i andColor:1 andColorArray:colorArray]) {
+                return NO;
+            }
+        }
+    }
+    return YES;
+}
+
+-(BOOL)checkBipartiteGraphAndCurrentVertex:(NSInteger)now andColor:(NSInteger)color andColorArray:(NSMutableArray *)colorArray {
+    if ([colorArray[now] integerValue] != 0) {
+        return YES;
+    }
+    
+    colorArray[now] = @(color);
+    
+    for (id nextObj in self.adj[now]) {
+        NSInteger next = [nextObj integerValue];
+        NSInteger nextColor = [colorArray[next] integerValue];
+        if (nextColor == 0) {
+            if (![self checkBipartiteGraphAndCurrentVertex:next andColor:3-color andColorArray:colorArray]) {
+                return NO;
+            }
+        } else {
+            if (color == nextColor) {
+                return NO;
+            }
+        }
+    }
+    
+    return YES;
 }
 
 @end
