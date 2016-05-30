@@ -81,9 +81,6 @@ int main(int argc, const char * argv[]) {
         NSLog(@"BFS 시작");
         bfs(adj, vertex, 1);
         
-        // NSNumber *num = @(2);
-        // NSLog(@"%@",num[20]);
-        
     }
     return 0;
 }
