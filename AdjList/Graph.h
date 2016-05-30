@@ -13,7 +13,9 @@
 -(instancetype)initWithVertex:(NSInteger)vertex;
 -(void)loadDemoData1;
 -(void)loadDemoData2;
+-(void)loadDemoData3;
 -(void)dfsWithStart:(NSInteger)start;
 -(void)bfsWithStart:(NSInteger)start;
 -(BOOL)checkBipartiteGraph;
+-(NSInteger)countConnectedComponents;
 @end

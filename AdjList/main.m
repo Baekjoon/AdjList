@@ -16,11 +16,19 @@ int main(int argc, const char * argv[]) {
         [graph dfsWithStart:1];
         [graph bfsWithStart:1];
         NSLog(@"이분 그래프인가요? %d", [graph checkBipartiteGraph]);
+        NSLog(@"연결 요소의 개수는 %zd개", [graph countConnectedComponents]);
         
         [graph loadDemoData2];
         [graph dfsWithStart:1];
         [graph bfsWithStart:1];
         NSLog(@"이분 그래프인가요? %d", [graph checkBipartiteGraph]);
+        NSLog(@"연결 요소의 개수는 %zd개", [graph countConnectedComponents]);
+        
+        [graph loadDemoData3];
+        [graph dfsWithStart:1];
+        [graph bfsWithStart:1];
+        NSLog(@"이분 그래프인가요? %d", [graph checkBipartiteGraph]);
+        NSLog(@"연결 요소의 개수는 %zd개", [graph countConnectedComponents]);
     }
     return 0;
 }

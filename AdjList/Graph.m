@@ -67,6 +67,19 @@
     [self.adj printList];
 }
 
+-(void)loadDemoData3 {
+    self.vertex = 6;
+    self.adj = [[AdjList alloc] initWithVertex:self.vertex];
+    [self.adj addEdgeWithFrom:1 andTo:2 andBidirection:YES];
+    [self.adj addEdgeWithFrom:1 andTo:5 andBidirection:YES];
+    [self.adj addEdgeWithFrom:2 andTo:5 andBidirection:YES];
+    [self.adj addEdgeWithFrom:4 andTo:3 andBidirection:YES];
+    [self.adj addEdgeWithFrom:4 andTo:6 andBidirection:YES];
+    [self.adj sortList];
+    [self.adj printList];
+}
+
+
 -(void)dfsWithStart:(NSInteger)start {
     NSLog(@"DFS 시작");
     NSMutableArray *check = [NSMutableArray array];
@@ -150,18 +163,33 @@
     for (id nextObj in self.adj[now]) {
         NSInteger next = [nextObj integerValue];
         NSInteger nextColor = [colorArray[next] integerValue];
+        // 다음 정점을 아직 방문하지 않았으면
         if (nextColor == 0) {
             if (![self checkBipartiteGraphAndCurrentVertex:next andColor:3-color andColorArray:colorArray]) {
                 return NO;
             }
-        } else {
+        } else { // 이미 방문했으면
             if (color == nextColor) {
                 return NO;
             }
         }
     }
-    
     return YES;
+}
+
+-(NSInteger)countConnectedComponents {
+    NSInteger components = 0;
+    NSMutableArray *check = [NSMutableArray array];
+    for (NSInteger i=0; i<=self.vertex; i++) {
+        [check addObject:@(NO)];
+    }
+    for (NSInteger i = 1; i <= self.vertex; i++) {
+        if ([check[i] boolValue] == NO) {
+            [self dfsAndCurrentVertex:i andVisited:check];
+            components += 1;
+        }
+    }
+    return components;
 }
 
 @end
