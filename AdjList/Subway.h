@@ -10,4 +10,7 @@
 
 @interface Subway : NSObject
 
+-(NSInteger)nameToIndex:(NSString *)stationName;
+-(NSString *)indexToName:(NSInteger)index;
+
 @end
