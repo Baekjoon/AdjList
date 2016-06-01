@@ -11,6 +11,7 @@
 		734787071CFC063E00C32FF9 /* AdjList.m in Sources */ = {isa = PBXBuildFile; fileRef = 734787061CFC063E00C32FF9 /* AdjList.m */; };
 		7347870E1CFC231400C32FF9 /* NSMutableArray+Queue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7347870C1CFC230600C32FF9 /* NSMutableArray+Queue.m */; };
 		734787111CFC26CA00C32FF9 /* Graph.m in Sources */ = {isa = PBXBuildFile; fileRef = 734787101CFC26CA00C32FF9 /* Graph.m */; };
+		73F649D01CFE75500005D53E /* Edge.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F649CF1CFE75500005D53E /* Edge.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +35,8 @@
 		7347870C1CFC230600C32FF9 /* NSMutableArray+Queue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Queue.m"; sourceTree = "<group>"; };
 		7347870F1CFC26CA00C32FF9 /* Graph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Graph.h; sourceTree = "<group>"; };
 		734787101CFC26CA00C32FF9 /* Graph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Graph.m; sourceTree = "<group>"; };
+		73F649CE1CFE75500005D53E /* Edge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Edge.h; sourceTree = "<group>"; };
+		73F649CF1CFE75500005D53E /* Edge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Edge.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +83,8 @@
 				734787061CFC063E00C32FF9 /* AdjList.m */,
 				7347870F1CFC26CA00C32FF9 /* Graph.h */,
 				734787101CFC26CA00C32FF9 /* Graph.m */,
+				73F649CE1CFE75500005D53E /* Edge.h */,
+				73F649CF1CFE75500005D53E /* Edge.m */,
 			);
 			name = Graph;
 			sourceTree = "<group>";
@@ -149,6 +154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73F649D01CFE75500005D53E /* Edge.m in Sources */,
 				734787111CFC26CA00C32FF9 /* Graph.m in Sources */,
 				734786FF1CFC061800C32FF9 /* main.m in Sources */,
 				734787071CFC063E00C32FF9 /* AdjList.m in Sources */,
@@ -273,6 +279,7 @@
 				734787041CFC061800C32FF9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
