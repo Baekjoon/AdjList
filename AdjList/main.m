@@ -12,7 +12,24 @@
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        Subway *s = [[Subway alloc] init];
+        Subway *subway = [[Subway alloc] init];
+        NSLog(@"%zd", [subway nameToIndex:@"신사"]);
+        
+        Graph *graph = [[Graph alloc] initWithVertex:subway.stations];
+        [subway addEdgeToGraph:graph];
+        
+        NSString *start = @"신사";
+        NSInteger startNumber = [subway nameToIndex:start];
+        NSString *end = @"종로3가";
+        NSInteger endNumber = [subway nameToIndex:end];
+        NSArray *path = [graph bfsWithStart:startNumber andEnd:endNumber];
+        NSMutableArray *pathWithName = [NSMutableArray array];
+        for (NSNumber *num in path) {
+            [pathWithName addObject:[subway indexToName:[num integerValue]]];
+        }
+        NSLog(@"%@",[pathWithName componentsJoinedByString:@" => "]);
+    
+        
         /*Graph *graph = [[Graph alloc] init];
         [graph loadDemoData1];
         [graph dfsWithStart:1];

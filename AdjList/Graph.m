@@ -13,7 +13,6 @@
 
 @interface Graph ()
 
-@property (strong) AdjList *adj;
 @property (readwrite) NSInteger vertex;
 
 -(void)dfsAndCurrentVertex:(NSInteger)now andVisited:(NSMutableArray *)check;
@@ -191,5 +190,76 @@
     }
     return components;
 }
+
+-(NSArray *)bfsWithStart:(NSInteger)start andEnd:(NSInteger)end {
+    NSMutableArray *check = [NSMutableArray array];
+    NSMutableArray *from = [NSMutableArray array];
+    for (NSInteger i=0; i<=self.vertex; i++) {
+        [check addObject:@(NO)];
+        [from addObject:@(-1)];
+    }
+    
+    NSMutableArray *queue = [NSMutableArray array];
+    [queue push:@(start)];
+    check[start] = @(YES);
+    // -1 -> start
+    while (![queue empty]) {
+        NSInteger now = [[queue pop] integerValue];
+        NSLog(@"%zd 방문", now);
+        
+        for (Edge *e in self.adj[now]) {
+            NSInteger next = e.to;
+            if ([check[next] boolValue] == NO) {
+                [queue push:@(next)];
+                check[next] = @(YES);
+                from[next] = @(now);
+            }
+        }
+    }
+    
+    NSMutableArray *path = [NSMutableArray array];
+    // start -> ..... from[from[end]] -> from[end] -> end
+    // from[v] -> v
+    
+    NSInteger i = end;
+    while(i != -1) {
+        [path addObject:@(i)];
+        i = [from[i] integerValue];
+    }
+    //  -----------
+    // |  -------  |
+    // | |  ---  | |
+    // | | |   | | |
+    // 0 1 2 3 4 5 6
+    // 6 5 4 3 2 1 0
+    // path.count = 7
+    for (NSInteger i = 0; i < path.count/2; i++) {
+        NSNumber *temp = path[i];
+        path[i] = path[path.count-i-1];
+        path[path.count-i-1] = temp;
+    }
+    
+    return path;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end
