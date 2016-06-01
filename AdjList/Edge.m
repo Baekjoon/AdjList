@@ -25,4 +25,14 @@
     return self;
 }
 
+-(NSComparisonResult)compare:(Edge *)obj {
+    if (self.to < obj.to) {
+        return NSOrderedAscending;
+    } else if (self.to == obj.to) {
+        return NSOrderedSame;
+    } else { // self.to > obj.to
+        return NSOrderedDescending;
+    }
+}
+
 @end

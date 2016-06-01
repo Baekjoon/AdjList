@@ -12,6 +12,7 @@
 		7347870E1CFC231400C32FF9 /* NSMutableArray+Queue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7347870C1CFC230600C32FF9 /* NSMutableArray+Queue.m */; };
 		734787111CFC26CA00C32FF9 /* Graph.m in Sources */ = {isa = PBXBuildFile; fileRef = 734787101CFC26CA00C32FF9 /* Graph.m */; };
 		73F649D01CFE75500005D53E /* Edge.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F649CF1CFE75500005D53E /* Edge.m */; };
+		73F649D31CFE78B40005D53E /* Subway.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F649D21CFE78B40005D53E /* Subway.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +38,8 @@
 		734787101CFC26CA00C32FF9 /* Graph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Graph.m; sourceTree = "<group>"; };
 		73F649CE1CFE75500005D53E /* Edge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Edge.h; sourceTree = "<group>"; };
 		73F649CF1CFE75500005D53E /* Edge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Edge.m; sourceTree = "<group>"; };
+		73F649D11CFE78B40005D53E /* Subway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Subway.h; sourceTree = "<group>"; };
+		73F649D21CFE78B40005D53E /* Subway.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Subway.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +75,8 @@
 				734786FE1CFC061800C32FF9 /* main.m */,
 				734787121CFC2D6F00C32FF9 /* Graph */,
 				734787131CFC2D7400C32FF9 /* Category */,
+				73F649D11CFE78B40005D53E /* Subway.h */,
+				73F649D21CFE78B40005D53E /* Subway.m */,
 			);
 			path = AdjList;
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 			files = (
 				73F649D01CFE75500005D53E /* Edge.m in Sources */,
 				734787111CFC26CA00C32FF9 /* Graph.m in Sources */,
+				73F649D31CFE78B40005D53E /* Subway.m in Sources */,
 				734786FF1CFC061800C32FF9 /* main.m in Sources */,
 				734787071CFC063E00C32FF9 /* AdjList.m in Sources */,
 				7347870E1CFC231400C32FF9 /* NSMutableArray+Queue.m in Sources */,

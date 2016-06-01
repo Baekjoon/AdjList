@@ -8,6 +8,7 @@
 
 #import "Graph.h"
 #import "AdjList.h"
+#import "Edge.h"
 #import "NSMutableArray+Queue.h"
 
 @interface Graph ()
@@ -102,9 +103,8 @@
     // 알아서 변환
     //    ↓
     // [adj objectAtIndexedSubscript:now];
-    for (id nextObj in self.adj[now]) {
-        NSInteger next = [nextObj integerValue];
-        [self dfsAndCurrentVertex:next andVisited:check];
+    for (Edge *e in self.adj[now]) {
+        [self dfsAndCurrentVertex:e.to andVisited:check];
     }
 }
 
@@ -124,8 +124,8 @@
         NSLog(@"%zd 방문", now);
         
         // 다음에 방문할 정점을 찾는다
-        for (id nextObj in self.adj[now]) {
-            NSInteger next = [nextObj integerValue];
+        for (Edge *e in self.adj[now]) {
+            NSInteger next = e.to;
             // 여기서 검사해야할 것은 무엇인가!
             if ([check[next] boolValue] == NO) {
                 // next를 방문한다 -> next를 큐에 넣는다
@@ -160,8 +160,8 @@
     
     colorArray[now] = @(color);
     
-    for (id nextObj in self.adj[now]) {
-        NSInteger next = [nextObj integerValue];
+    for (Edge *e in self.adj[now]) {
+        NSInteger next = e.to;
         NSInteger nextColor = [colorArray[next] integerValue];
         // 다음 정점을 아직 방문하지 않았으면
         if (nextColor == 0) {

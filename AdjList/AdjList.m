@@ -25,6 +25,7 @@
  ]
 */
 #import "AdjList.h"
+#import "Edge.h"
 
 @interface AdjList ()
 
@@ -53,7 +54,10 @@
     if (from <= 0 || self.vertex < from) return NO;
     if (to <= 0 || self.vertex < to) return NO;
 
-    [self.arr[from] addObject:@(to)];
+    // [self.arr[from] addObject:@(to)];
+    
+    Edge *e = [[Edge alloc] initWithFrom:from andTo:to];
+    [self.arr[from] addObject:e];
     
     return YES;
 }
@@ -70,8 +74,8 @@
     for (NSInteger i = 1; i <= self.vertex; i++) {
         NSMutableString *s = [NSMutableString string];
         [s appendFormat:@"arr[%zd]:", i];
-        for (id to in self.arr[i]) {
-            [s appendFormat:@" %@", to];
+        for (Edge *e in self.arr[i]) {
+            [s appendFormat:@" (%zd,%zd)", e.to, e.cost];
         }
         NSLog(@"%@",s);
     }

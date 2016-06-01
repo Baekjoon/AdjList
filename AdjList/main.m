@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "Graph.h"
+#import "Subway.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        Graph *graph = [[Graph alloc] init];
+        Subway *s = [[Subway alloc] init];
+        /*Graph *graph = [[Graph alloc] init];
         [graph loadDemoData1];
         [graph dfsWithStart:1];
         [graph bfsWithStart:1];
@@ -28,7 +30,7 @@ int main(int argc, const char * argv[]) {
         [graph dfsWithStart:1];
         [graph bfsWithStart:1];
         NSLog(@"이분 그래프인가요? %d", [graph checkBipartiteGraph]);
-        NSLog(@"연결 요소의 개수는 %zd개", [graph countConnectedComponents]);
+        NSLog(@"연결 요소의 개수는 %zd개", [graph countConnectedComponents]);*/
     }
     return 0;
 }
