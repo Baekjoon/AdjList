@@ -53,10 +53,23 @@
     // 1 ~ self.vertex 범위 안에 들어가는지 검사
     if (from <= 0 || self.vertex < from) return NO;
     if (to <= 0 || self.vertex < to) return NO;
-
+    
     // [self.arr[from] addObject:@(to)];
     
     Edge *e = [[Edge alloc] initWithFrom:from andTo:to];
+    [self.arr[from] addObject:e];
+    
+    return YES;
+}
+
+-(BOOL)addEdgeWithFrom:(NSInteger)from andTo:(NSInteger)to andCost:(NSInteger)cost {
+    // 1 ~ self.vertex 범위 안에 들어가는지 검사
+    if (from <= 0 || self.vertex < from) return NO;
+    if (to <= 0 || self.vertex < to) return NO;
+    
+    // [self.arr[from] addObject:@(to)];
+    
+    Edge *e = [[Edge alloc] initWithFrom:from andTo:to andCost:cost];
     [self.arr[from] addObject:e];
     
     return YES;
@@ -69,6 +82,15 @@
         return [self addEdgeWithFrom:from andTo:to];
     }
 }
+
+-(BOOL)addEdgeWithFrom:(NSInteger)from andTo:(NSInteger)to andCost:(NSInteger)cost andBidirection:(BOOL)bidirection {
+    if (bidirection) {
+        return [self addEdgeWithFrom:from andTo:to andCost:cost] && [self addEdgeWithFrom:to andTo:from andCost:cost];
+    } else {
+        return [self addEdgeWithFrom:from andTo:to andCost:cost];
+    }
+}
+
 // A[1]: 2 3 5 7
 -(void)printList {
     for (NSInteger i = 1; i <= self.vertex; i++) {
